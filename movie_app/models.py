@@ -19,4 +19,4 @@ class Movie(models.Model):
         return f'{self.name} - {self.rating}%'
 
     def get_url(self):
-        return reverse('movie-detail', args=[self.id])
+        return reverse('movie-detail', args=[self.slug])
