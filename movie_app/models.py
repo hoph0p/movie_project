@@ -10,6 +10,9 @@ class Director(models.Model):
     last_name = models.CharField(max_length=100)
     director_email = models.EmailField()
 
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+
 
 class Movie(models.Model):
     EUR = 'EUR'

@@ -5,6 +5,7 @@ from django.db.models import QuerySet
 
 
 # Register your models here.
+admin.site.register(Director)
 class RatingFilter(admin.SimpleListFilter):
     title = 'Фильтер по рейтингу'
     parameter_name = 'rating'
