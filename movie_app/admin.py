@@ -1,11 +1,19 @@
 from django.contrib import admin, messages
 from django.contrib.auth.models import User
-from .models import Movie, Director
+from .models import Movie, Director, Actor, DressingRoom
 from django.db.models import QuerySet
-
 
 # Register your models here.
 admin.site.register(Director)
+admin.site.register(Actor)
+# admin.site.register(DressingRoom)
+
+
+@admin.register(DressingRoom)
+class DressingRoomAdmin(admin.ModelAdmin):
+    list_display = ['floor', 'number', 'actor']
+
+
 class RatingFilter(admin.SimpleListFilter):
     title = 'Фильтер по рейтингу'
     parameter_name = 'rating'
@@ -38,6 +46,7 @@ class MovieAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     list_display = ['name', 'rating', 'director', 'budget', 'rating_status']
     list_editable = ['rating', 'director', 'budget']
+    filter_vertical = ['actors']
     ordering = ['rating', '-name']
     list_per_page = 10
     actions = ['set_dollars', 'set_euro']

@@ -5,4 +5,11 @@
     <h2>Имя - {{ director.first_name }}</h2>
     <h2>Фамилия - {{ director.last_name }}</h2>
     <h2>Почта - {{ director.director_email }}</h2>
+    <hr>
+    <h3>Список фильмов</h3>
+    <ul>
+        {% for movie in director.movies.all %}
+            <li>{{ movie }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
